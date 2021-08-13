@@ -13,16 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from platzigram import views
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
-
-
-def hello_world(request):
-    return HttpResponse('Hello, world!')
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello-world/', hello_world)
+    path('hello-world/', views.hello_world),
+    path('sorted/', views.sort_integers),
+    path('hi/<str:name>/<int:age>', views.say_hi)
+
 ]
